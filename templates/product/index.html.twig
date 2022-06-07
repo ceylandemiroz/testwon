@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Wondex-Produits{% endblock %}
+
+{% block content %}
+<style>
+</style>
+
+<div class="row">
+    <div class="col-md-3">
+        <h3> Filtrer </h3>
+        {{ form(form) }}
+    </div>
+    <div class="col-md-9">
+        <div class="">
+             <h3 class="text-center"> Nos Produits </h3>
+            <div class="card-columns">
+            {% for product in products %}
+                <div class="card">
+                    <a href="{{ path('product', { 'slug': product.slug }) }}">
+                    <img style="max-width: 225px; height: 251px;" src="/img/{{ product.illustration }}" class="card-img-top" alt="{{ product.name}}">
+                    </a>
+                    <div class="card-body">
+                    <h5 class="card-title">{{ product.name }}</h5>
+                    <p class="card-text">{{ product.subtitle}}</p>
+                    <p class="card-text"><small class="font-weight-bold">À partir de {{ (product.price / 100)|number_format(2, ',', '.') }} £</small></p>  
+                    </div>
+                </div>
+            {% endfor %}    
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

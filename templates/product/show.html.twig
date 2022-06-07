@@ -1,0 +1,24 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ product.name }} {% endblock %}
+
+{% block content %}
+      <div class="card">
+            <div class="row">
+                  <div class ="col-md-5">
+                  <img src="/img/{{ product.illustration }}" alt="{{ product.name }}" class="img-fluid">
+                  </div>
+                  <div class="col-md-7 my-auto">
+                  <h3> {{ product.name }} </h3>
+                  <p> {{ product.subtitle }} </p>
+                  <hr>
+                  <p class="text-danger"> {{ product.description }} dimension <hr> Notre Produit Reduction '%10'</p>
+                  <hr>
+                  <p> <span class="text-light bg-dark">À partir de;</span> {{ (product.price / 100)|number_format(2, ',', '.') }} £ </p>
+                  <a href="" class="btn btn-primary"> Ajouter au panier </a>
+
+                  </div>   
+            </div>
+      </div>
+
+{% endblock %}

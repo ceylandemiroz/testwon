@@ -1,0 +1,22 @@
+admin:
+  Products:
+      add:
+        Title: Gestion des produits
+        Add: Ajouter
+        AddSubTitle: Ajouter un 
+      index:
+        Title: Gestion des produits
+        col:
+          Select: Sélection
+          Id: ID
+          Name: Nom
+          Slug: Slug
+          Illustration: Image
+          SubTitle: SousTitre
+        confirm:
+          remove:
+            Title: Suppression des produits
+            Text: Etes-vous sûr de vouloir supprimer les produits sélectionners ?
+            ButSubText: Supprimer
+        Add: Ajouter
+        Remove: Supprimer

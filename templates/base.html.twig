@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="wondex est reponde touts vos besoin!">
+    <meta name="author" content="">
+    <meta name="generator" content="Jekyll v4.1.1">
+    <title> {% block title %} wondex produits {% endblock %}</title>
+
+    <!-- Bootstrap core CSS -->
+    
+    <link href="{{ asset ('assets/css/bootstrap.min.css')}}" rel="stylesheet">
+    {% block stylesheets %}
+    <link href="{{ asset ('assets/css/wondex.css') }}" rel="stylesheet">
+    {% endblock %}
+
+
+<style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+   }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+       font-size: 3.5rem;
+       }
+    }
+ .sidenav {
+  height: 100%;
+  width:0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #fefafa;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-left .5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+ul#menu-v, #menu-v ul
+{
+    width:300px; /* Main Menu width */
+    border:1px rgba(190,190,190,0.3);
+    list-style:none; margin:0; padding:0;
+    z-index:9;
+}     
+
+#menu-v li
+{
+    margin:0;padding:0;
+    position:relative;    
+    background-color: #fefafa; /*fallback color*/
+    transition:background 0.5s;
+}
+#menu-v li:hover
+{
+    background-color:rgb(0 0 0 / 11%);
+}
+
+#menu-v a
+{
+    font:normal 12px Arial;
+    border-top:1px solid rgba(190,190,190,0.3);
+    display:block;
+    color: #111;
+    font-family: cursive;
+    font-size: large;
+    text-decoration: none;
+    line-height: 70px;
+    padding-left: 50px;
+    position: relative;          
+}
+
+#menu-v li:first-child a
+{
+    border-top:0;
+}
+
+#menu-v a.arrow::after{
+    content:'';
+    position:absolute;
+    display:inline;
+    top:50%;
+    margin-top:-4px;
+    right:8px;
+    border-width:4px;
+    border-style:solid;
+    border-color:transparent transparent transparent white;
+    transition:border-color 0.5s;  
+}
+                
+#menu-v li a.arrow:hover::after
+{
+    border-color:transparent transparent transparent #CCCCCC;
+}
+        
+/*Sub level menu items
+---------------------------------------*/
+#menu-v li ul
+{
+    min-width:180px; /* Sub level menu min width */
+    position:absolute;
+    display:none;
+    left:100%;
+    top:50%; transform:translateY(-50%);
+}
+
+#menu-v li:hover > ul
+{
+    display:block;
+} 
+
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="{{asset ('assets/css/carousel.css')}}" rel="stylesheet">
+</head>
+<body>
+<header>
+<nav class="navbar navbar-expand-md navbar-light fixed-top bg-light">
+<div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a class="navbar-brand ml-5 text-danger text-center font-weight-bold text-uppercase" href="{{ path('home')}}">Wondex</a><hr>
+    {#<ul id="menu-v">   
+        {% macro menu_categories(categories) %}
+                    {% import _self as macros %}
+                    {% for category in categories %}
+                        <li>
+                            <a href="{{ path ('catprod', { 'catid': category.id })}}" class="">{{ category.name }}</a>
+                            {% if category.children is not empty %}
+                                <ul class="children">
+                                    {{ macros.menu_categories(category.children) }}
+                                </ul>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                {% endmacro %}
+
+                <ul class="menu-category">
+                    {{ _self.menu_categories(categories) }}
+                </ul>    
+    </ul>#}
+</div>
+
+       <span style="font-size:20px;cursor:pointer" class="mr-3" onclick="openNav()">&#9776; open</span>
+        <a class="navbar-brand" href="{{ path('home')}}">TestWon</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav mr-auto">
+               {#} <li class="nav-item active">
+                    <a class="nav-link" href="{{ path('products') }}">Nos Produits</a>#}
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Qui sommes-nous?</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="">Contact</a>
+                </li>
+                
+            </ul>
+            <div class="navbar-item-custom">
+                {% if app.user %}
+                   <a href="{{ path('account') }}"> Mon Compte <small>{{ app.user.firstname }} </small></a> | <a href="{{ path('app_logout') }}"> Déconnextion </a>
+                {% else %}
+                   <a href="{{ path('app_login') }}"> Connection </a> | <a href="{{ path('app_register') }}"> Inscription </a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main role="main">
+{% if block('carousel') is defined %}
+
+    <div id="myCarousel" class="carousel slide" data-ride="carousel">
+        <ol class="carousel-indicators">
+            <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+            <li data-target="#myCarousel" data-slide-to="1"></li>
+            <li data-target="#myCarousel" data-slide-to="2"></li>
+        </ol>
+        <div class="carousel-inner">
+            <div class="carousel-item active">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                    <div class="carousel-caption text-left">
+                        <h1>Sur Mesure %100 Français.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                    <div class="carousel-caption">
+                        <h1>Des designs accrocheurs.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <svg class="bd-placeholder-img" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img"><rect width="100%" height="100%" fill="#777"/></svg>
+                <div class="container">
+                    <div class="carousel-caption text-right">
+                        <h1> Nos Carrelages.</h1>
+                        <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                        <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+    </div>
+    {% endif %}
+
+
+    <!-- Marketing messaging and featurettes
+    ================================================== -->
+    <!-- Wrap the rest of the page in another container to center all the content. -->
+
+    <div class="container marketing {% if block('carousel') is not defined %} mt-5 {% endif %}">
+
+    {% block content %}
+    {% endblock %}
+
+
+    </div><!-- /.container -->
+
+    <!-- FOOTER 
+    <footer class="footer-custom fixed-bottom">
+        <p class="float-right mr-5"><a href="#">Back to top</a></p>
+        <p class="float-top">&copy; 2019-2021 Wondex,</br> <small><a href="#">Privacy</a> &middot; <a href="#">Terms</a></small></p>
+    </footer>-->
+</main>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+{% block javascripts %}
+<script src="{{ asset ('assets/js/bootstrap.bundle.js')}}"></script>
+{% endblock %}
+<script>
+function openNav() {
+  document.getElementById("mySidenav").style.width = "600px";
+  document.getElementById("main").style.marginLeft = "400px";
+  document.body.style.backgroundColor = "rgba(0,0,0,0.4)";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+  document.getElementById("main").style.marginLeft= "0";
+  document.body.style.backgroundColor = "white";
+}
+</script>
+</body>
+</html>

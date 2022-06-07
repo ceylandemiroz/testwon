@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Mon Compte - Wondex{% endblock %}
+
+{% block content %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<h1> Mon Compte </h1>
+ <p> Bienvenue {{app.user.firstname}} dans votre compte. C'est dans cette espace que vous allez pouvoire  gérer toutes vos informations personnelles. </p>
+ <hr>
+ <a href="{{ path ('account_password')}}"> Modifier Mon Mot de Passe </a><br/>
+ <a href="{{ path ('account_address')}}"> Gérer Mes Adresses </a>
+ 
+{% endblock %}
